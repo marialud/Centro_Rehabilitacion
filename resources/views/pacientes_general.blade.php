@@ -44,7 +44,7 @@
               <div class="input-group col-md-12">
                {{Form::submit('Enviar',array('class'=>'btn btn-primary'))  }}
               </div>
-
+                  <h1>hhhhj</h1>
              {{Form::close() }}
            </div>
         </div>
