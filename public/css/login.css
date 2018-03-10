@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css?family=Karla');
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #75aaff;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #75aaff;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #75aaff;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #75aaff;
+}
+*{
+	margin: 0px;
+	padding: 0px;
+}
+body{
+	font-family: 'Karla', sans-serif;
+  background-image: url("../img/p7.jpg");
+ }
+.columna{
+
+}
+.fondologin{
+
+
+}
+@keyframes animatedBackground {
+	from { background-position: 0 0; }
+	to { background-position: 100% 0; }
+}
+h1{
+  text-align: center;
+  color: white;
+  font-size: 2.0rem;
+  font-weight: 100;
+  padding: 50px;
+
+}
+form{
+
+}
+
+form button{
+	width: 150px;
+	height: 30px;
+	color: white;
+	border: none;
+	background-color: #173970;
+  border-radius: 5px;
+  float: right;
+  margin-top: -40px;
+}
+form a{
+  padding: 10px;
+  display: block;
+  float: right;color: white;
+  text-decoration: none;
+  width: 100%;
+  text-align: right;
+  margin-top: -30px;
+
+
+}
+
+form fieldset{
+  border: none;
+  padding: 30px;
+}
+form fieldset input{
+  padding: 5px;
+  width: 100%;
+  height: 30px;
+  border: none;
+  border-bottom: 1px solid #75aaff;
+  border-radius: 5px;
+  outline-color: transparent;
+  font-size: 1.1rem;
+  color: black;
+  font-weight: 100;
+}
+
+.cardd{
+  background-color: rgba(0,0,0,0.25);
+  margin-left: 450px;
+  margin-top: 30px;
+  height: 570px;
+  width: 470px;
+  border-radius: 10px;
+}
+
+.imagenl{
+  padding-left: 165px;
+
+}
+
+/*NUEVO LOGIN*/
+
+.card{
+  background-color: rgba(0,0,0,0.25);
+
+
+}
+
+.ingresar{
+  background-color: #012766;
+    border-color: #012766;
+}
+
+.ingresarr{
+margin-right: 20px;
+}
+
+.card-header{
+  text-align: center;
+
+}

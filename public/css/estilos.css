@@ -1,0 +1,382 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald|Roboto');
+
+body{
+
+  background-image: url("../img/fondito.jpg");
+
+}
+.item h2{
+  position: absolute;
+  margin-top: 320px;
+ color: white;
+ text-align: center;
+ margin-left:100px;
+ font-family: 'Roboto', sans-serif;
+ font-size: 5rem;
+ background-color: rgba(0,0,0,0.5);
+
+}
+.item h3{
+  position: absolute;
+  margin-top: 390px;
+ color: white;
+ text-align: center;
+ margin-left: 180px;
+ font-family: 'Roboto', sans-serif;
+ font-size: 2.3rem;
+
+
+
+}
+#imagen {
+position: absolute;
+z-index: 1001;
+margin-left: 150px;
+margin-top: 51px;
+
+
+
+
+}
+
+.item img{
+
+
+}
+
+.estilo{
+	/*position: fixed;*/
+	z-index: 1000;
+    margin-left: 130px;
+	background-color: rgba(0,0,0,0.5);
+	text-align: center;
+    width: 81%;
+	border:none;
+
+
+}
+
+.estilo li a{
+	background: black;
+	color: white;
+
+}
+
+section#nosotros{
+
+  min-height: 250px;
+
+ background-color: white;
+  /*bbackground-image: url("../img/fondo.png");*/
+
+}
+
+.nosotros h1{
+	text-align: center;
+	color: black;
+	font-family: 'Roboto', sans-serif;
+}
+
+.nosotros h5{
+	text-align: center;
+	font-family: 'Roboto', sans-serif;
+	color: #231707;
+
+}
+
+.nosotros2 h5{
+	text-align: center;
+	font-family: 'Roboto', sans-serif;
+	color: #231707;
+
+
+}
+#separacion{
+	height: 50px;
+
+}
+.nosotros{
+    background-color: white;
+	margin-top: -405px;
+	width: 70%;
+	min-height: -300px;
+
+}
+
+.droga img{
+	margin-left: 233px;
+}
+
+section#mision{
+ /*bbackground-image: url("../img/fondo.png");*/
+   background: black;
+ min-height: 600px;
+
+
+}
+
+.mision{
+	margin-top: -30px;
+		min-height: 100px;
+}
+
+section#nosotross{
+	min-height: 380px;
+   background-color: white;
+}
+
+.nosotros2{
+	margin-top: -110px;
+	background-color: white;
+		width: 70%;
+
+}
+
+.mv{
+	text-align: center;
+	margin-top: -20px;
+}
+
+.mv h5, h2{
+	text-align: center;
+	margin-top: 70px;
+	color: white;
+		font-family: 'Roboto', sans-serif;
+}
+
+section#instalaciones{
+	min-height: -30px;
+	background-color: black;
+
+}
+section#video{
+	min-height: 500px;
+	background-color: black;
+}
+section#s{
+	min-height: 15px;
+	background-color: white;
+}
+
+
+section#instalaciones h1{
+	color: black;
+	font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+
+.inst{
+	background-color: white;
+	min-height: 160px;
+	width: 94%;
+	margin-top: -30px;
+ margin-left: 36px;
+}
+.inst2{
+  background-color: white;
+	min-height: 100px;
+	width: 94%;
+	margin-top: -30px;
+ margin-left: 36px;
+}
+.inst h4{
+  color: black;
+  text-align: center;
+  	font-family: 'Roboto', sans-serif;
+}
+.inst h6{
+  text-align: center;
+}
+
+ .img3{
+
+  margin-top: 77px;
+}
+
+
+.img4{
+
+  margin-left: 253px;
+  margin-top: 40px;
+}
+
+.img5{
+  margin-top: -140px;
+  margin-left: 497px;
+}
+
+
+.img6{
+  margin-top: -1px;
+  margin-left: 763px;
+}
+
+.t1{
+ width: 20%;
+ margin-left:20px;
+ margin-top: 30px;
+}
+
+.t2{
+ width: 20%;
+ margin-top: -244px;
+ margin-left:280px;
+}
+
+.t3{
+ width: 20%;
+ margin-top: -150px;
+ margin-left:530px;
+}
+
+.t4{
+ width: 20%;
+ margin-top: -245px;
+ margin-left:  785px;
+}
+
+.t1 h6{
+ font-family: 'Roboto', sans-serif;
+}
+
+section#contacto{
+	min-height: 220px;
+	background-color: white;
+}
+
+
+#imagenn{
+	margin-left: 10px;
+	margin-top: 30px;
+}
+
+.linea{
+	background-color: blue;
+	height: 175px;
+    width: 1px;
+    margin-top: -160px;
+    margin-left: 160px;
+
+}
+
+#ubi{
+ margin-left: 250px;
+ margin-top: -150px;
+ font-size: 3.2rem;
+ color: red;
+ float: left
+
+}
+#ubi a{
+ color: #ad0505;
+
+}
+
+.ut{
+ margin-left: 290px;
+ margin-top: -150px;
+ color: black;
+
+}
+
+.tel{
+ margin-left: 503px;
+ margin-top: -150px;
+ font-size: 2rem;
+ color: black;
+ float: left
+
+}
+
+.te{
+ margin-left: 540px;
+ margin-top: -95px;
+ color: black;
+
+}
+
+.correo{
+ margin-left: 503px;
+ margin-top: -100px;
+ font-size: 2rem;
+ color: black;
+ float: left
+
+}
+
+.co{
+ margin-left: 540px;
+ margin-top: 40px;
+ color: black;
+
+}
+
+.facebook{
+	font-size: 5rem;
+	color: #201191;
+	margin-left: 860px;
+	margin-top: -55px;
+}
+
+.face{
+ margin-left: 770px;
+ margin-top: -100px;
+ color: black;
+
+}
+
+.unidades{
+	 margin-left: 1025px;
+	 margin-top: -60px;
+}
+
+.unidades2{
+	 margin-left: 1150px;
+	 margin-top: -150px;
+}
+
+section#derechos{
+	min-height: 60px;
+	background-color: black;
+}
+
+section#derechos h5{
+	 color: #666363;
+}
+
+.dere{
+	margin-left: 1150px;
+	margin-top: -20px;
+}
+
+.dere1{
+	margin-top: 23px;
+}
+
+.sli{
+ margin-top: -170px;
+
+}
+
+.vi h4{
+  color: white;
+}
+
+.visib{
+  margin-top: 20px;
+}
+
+.misib{
+  margin-top: 160px;
+}
+
+.flecha{
+  font-size: 4.5rem;
+  color: rgba(0,0,0,0.5);
+  text-align: center;
+}
+
+.flecha a{
+  color: #00235b;
+
+}
