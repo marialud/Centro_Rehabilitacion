@@ -13,7 +13,14 @@ class PacientesController extends Controller
   }
 
     public function index(){
-      return view('pacientes');
+       $registros=
+       \DB::table('pacientes')
+       ->orderBy('nombre')
+       //->take(10)
+       ->get();
+
+      return view('pacientes')
+      ->with('pacientes',$registros);
     }
     public function store(Request $req){
 
@@ -42,9 +49,11 @@ class PacientesController extends Controller
 
      }
 
-
     }
-
+    public function destroy($id){
+      $paciente=Paciente::find($id);
+      dd($id);
+    }
 
 
 

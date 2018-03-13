@@ -20,6 +20,37 @@
              {{ session()->get('mensaje') }}
            </div>
          @endif
+         <table class="table table-condensed">
+        <thead>
+          <tr>
+              <td>Id</td>
+              <td>Nombre</td>
+              <td>Apellido Paterno</td>
+              <td>Apellido Materno</td>
+              <td>Adiccion</td>
+              <td>Eliminar</td>
+          <tr>
+          </thead>
+          <tbody>
+            @forelse($pacientes as $pacie)
+             <tr>
+               <td>{{ $pacie->id_paciente}}</td>
+               <td></td>
+               <td>
+                 {!! Form::open(
+                   array('route'=>['admin.pacientes.destroy',$pacie->id_paciente],
+                'method'=>'delete' )) !!}
+                 <button type="submit">
+                   <i clas="glyphicon glypicon-trash"></i>
+                 </button>
+                 {!! Form::close() !!}
+               </td>
+             </tr>
+             @empty
+             <p>Sin registros</p>
+             @endforelse
+           </tbody>
+         </table>
           {{Form::open( array('url'=>'admin/pacientes','files'=>true )) }}
           <div class="input-group col-md-12">
             <label for='nombre'>Nombre</label><br>
