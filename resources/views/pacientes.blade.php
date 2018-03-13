@@ -35,7 +35,11 @@
             @forelse($pacientes as $pacie)
              <tr>
                <td>{{ $pacie->id_paciente}}</td>
-               <td></td>
+               <td>{{ $pacie->nombre}}</td>
+               <td>{{ $pacie->ap_paterno}}</td>
+               <td>{{ $pacie->ap_materno}}</td>
+               <td>{{ $pacie->adiccion}}</td>
+              <td></td>
                <td>
                  {!! Form::open(
                    array('route'=>['admin.pacientes.destroy',$pacie->id_paciente],
