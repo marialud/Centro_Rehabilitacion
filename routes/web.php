@@ -14,11 +14,9 @@
 Route::get('/', function () {
     return view('principal');
 });
-Route::get('/loginn', function () {
-    return view('loginn');
-});
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('admin');
 });
 Route::get('/registro', function () {
     return view('registro');
@@ -26,12 +24,12 @@ Route::get('/registro', function () {
 
 Route::group(['prefix'=>'admin','as'=>'admin.'],function(){
    Route::get('/','AdminController@index');
-   Route::get('/pagos','PagosController@index');
+   Route::get('/pagos/{id}','PagosController@index');
    Route::resource('pagos','PagosController');
    Route::get('/pacientes','PacientesController@index');
    Route::resource('pacientes','PacientesController');
-   Route::get('/pacientes_general','Pacientes_generalController@index');
-  Route::resource('pacientes_general','Pacientes_generalController');
+   Route::get('/paciente_general','Paciente_generalController@index');
+  Route::resource('paciente_general','Paciente_generalController');
 
 
 });

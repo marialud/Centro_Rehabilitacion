@@ -11,7 +11,7 @@
 <div class="container">
  <div class="col-md-8">
    <div class="card">
-     <div class="card-header">Pagos</div>
+     <div class="card-header">Paciente General</div>
        <div class="card-body">
          <!-- Trigger the modal with a button -->
 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
@@ -27,28 +27,34 @@
         <h4 class="modal-title">Modal Header</h4>
       </div>
       <div class="modal-body">
-        {{Form::open( array('url'=>'admin/pagos','files'=>true )) }}
-        <input type="hidden" name="id_paciente" value="{{$id_paciente}}">
+        {{Form::open( array('url'=>'admin/paciente_general','files'=>true )) }}
         <div class="input-group col-md-12">
-          <label for='fecha'>Fecha</label><br>
-           {{Form::date('fecha','',array('class'=>'form-control',
-           'placeholder'=>'fecha') ) }}
+          <label for='edad'>Edad</label><br>
+           {{Form::number('edad','',array('class'=>'form-control',
+           'placeholder'=>'edad') ) }}
          </div>
           <div class="input-group col-md-12">
-            <label for='cantidad'>Cantidad</label><br>
-             {{Form::number('cantidad','',array('class'=>'form-control',
-             'placeholder'=>'cantidad') ) }}
+            <label for='tiempo_con_la_adiccion'>Tiempo con la adiccion</label><br>
+             {{Form::text('tiempo_con_la_adiccion','',array('class'=>'form-control',
+             'placeholder'=>'tiempo_con_la_adiccion') ) }}
            </div>
            <div class="input-group col-md-12">
-             <label for='saldo_restante'>Saldo_restante</label><br>
-              {{Form::number('saldo_restante','',array('class'=>'form-control',
-              'placeholder'=>'saldo_restante') ) }}
+             <label for='lugar_procedencia'>Lugar procedencia</label><br>
+              {{Form::text('lugar_procedencia','',array('class'=>'form-control',
+              'placeholder'=>'lugar_procedencia') ) }}
             </div>
+            <div class="input-group col-md-12">
+              <label for='ingreso'>Ingreso</label><br>
+               {{Form::date('ingreso','',array('class'=>'form-control',
+               'placeholder'=>'ingreso') ) }}
+             </div>
             <div class="input-group col-md-12">
              {{Form::submit('Enviar',array('class'=>'btn btn-primary'))  }}
             </div>
 
            {{Form::close() }}
+
+
 
       </div>
       <div class="modal-footer">
@@ -75,36 +81,39 @@
          <table class="table table-condensed">
         <thead>
           <tr>
-              <td>Id Pago</td>
-              <td>Id paciente</td>
-              <td>Fecha</td>
-              <td>Cantidad</td>
-              <td>Saldo Restante</td>
-              <td>Eliminar</td>
+              <td>Id</td>
+              <td>edad</td>
+              <td>tiempo_con_la_adiccion</td>
+              <td>lugar_procedencia</td>
+              <td>ingreso</td>
+              <td>Editar</td>
+              <td>Eliminar </td>
           <tr>
           </thead>
           <tbody>
-            @forelse($pagos as $pa)
+            @forelse($paciente_general as $pacieg)
              <tr>
-               <td>{{ $pa->id_pago}}</td>
-               <td>{{ $pa->id_paciente}}</td>
-               <td>{{ $pa->fecha}}</td>
-               <td>{{ $pa->cantidad}}</td>
-               <td>{{ $pa->saldo_restante}}</td>
-              <td>
-                <button type="button" class="btn btn-info btn-lg btnEdit"
-                data-fe="{{ $pa->fecha}}"
-                data-ca="{{ $pa->cantidad}}"
-                data-sa="{{ $pa->saldo_restante}}"
-                data-toggle="modal" data-target="#myModal2">
-                  <i class="fa fa-edit"></i></button>
-              </td>
+               <td>{{ $pacieg->id_paciente}}</td>
+               <td>{{ $pacieg->edad}}</td>
+               <td>{{ $pacieg->tiempo_con_la_adiccion}}</td>
+               <td>{{ $pacieg->lugar_procedencia}}</td>
+               <td>{{ $pacieg->ingreso}}</td>
+
+               <td>
+               <button type="button" class="btn btn-info btn-lg btnEdit"
+               data-ed="{{ $pacieg->edad}}"
+               data-ti="{{ $pacieg->tiempo_con_la_adiccion}}"
+               data-lu="{{ $pacieg->lugar_procedencia}}"
+               data-ing="{{ $pacieg->ingreso}}"
+               data-toggle="modal" data-target="#myModal2">
+                 <i class="fa fa-edit"></i></button>
+               </td>
                <td>
                  {!! Form::open(
-                   array('route'=>['admin.pagos.destroy',$pa->id_pago],
+                   array('route'=>['admin.paciente_general.destroy',$pacieg->id_paciente],
                 'method'=>'delete' )) !!}
                  <button type="submit">
-                   <i class="fa fa-trash"></i>
+                    <i class="fa fa-trash"></i>
                  </button>
                  {!! Form::close() !!}
                </td>
@@ -131,18 +140,21 @@
           </div>
           <div class="modal-body">
             <div class="input-group">
-              <label for="">Fecha</label>
-              <input type="number" name="feEditar" id="feEditar" value="" class="form-control">
+              <label for="">Edad</label>
+              <input type="number" name="edEditar" id="edEditar" value="" class="form-control">
              </div>
              <div class="input-group">
-               <label for="">Cantidad</label>
-               <input type="number" name="caEditar" id="caEditar" value="" class="form-control">
+               <label for="">Tiempo con la adiccion</label>
+               <input type="text" name="tiEditar" id="tiEditar" value="" class="form-control">
               </div>
               <div class="input-group">
-                <label for="">Saldo Restante</label>
-                <input type="number" name="saEditar" id="saEditar" value="" class="form-control">
+                <label for="">Lugar procedencia</label>
+                <input type="text" name="luEditar" id="luEditar" value="" class="form-control">
                </div>
-
+               <div class="input-group">
+                 <label for="">Ingreso</label>
+                 <input type="date" name="ingEditar" id="ingEditar" value="" class="form">
+                </div>
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Editar</button>
@@ -159,13 +171,14 @@
       <script type="text/javascript">
        $(document).ready(function(){
          $(".btnEdit").on('click',function(){
-           var fe=$(this).data('fecha');
-           var ca=$(this).data('cantidad');
-           var sa=$(this).data('cantidad_restante');
-           $("#feEditar").val(ed);
-           $("#caEditar").val(ti);
-           $("#saEditar").val(lu);
-
+           var ed=$(this).data('edad');
+           var ti=$(this).data('tiempo_con_la_adiccion');
+           var lu=$(this).data('lugar_procedencia');
+          var ing=$(this).data('ingreso');
+           $("#edEditar").val(ed);
+           $("#tiEditar").val(ti);
+           $("#luEditar").val(lu);
+           $("#ingEditar").val(ing);
 
          });
        });

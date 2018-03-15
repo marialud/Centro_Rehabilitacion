@@ -5,16 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator;
 use App\Paciente_general;
-class Pacientes_generalController extends Controller
+class Paciente_generalController extends Controller
 {
   public function __construct()
   {
       $this->middleware('auth');
   }
 
-    public function index(){
-      return view('pacientes_general');
-    }
+  public function index(){
+     $registros=
+     \DB::table('paciente_general')
+     ->orderBy('edad')
+     //->take(10)
+     ->get();
+
+    return view('paciente_general')
+    ->with('paciente_general',$registros);
+  }
     public function store(Request $req){
 
 
@@ -27,7 +34,7 @@ class Pacientes_generalController extends Controller
      if($validator->fails()){
         //quiere decir que no esta correcto
 
-        return redirect('/admin/pacientes_general')
+        return redirect('/admin/paciente_general')
         ->withInput()
         ->withErrors($validator);
      }else{
@@ -38,11 +45,18 @@ class Pacientes_generalController extends Controller
           'ingreso'=>$req->ingreso
 
          ]);
-         return redirect() ->to('/admin/pacientes_general')
+         return redirect() ->to('/admin/paciente_general')
          ->with('mensaje','Paciente Agregado');
 
      }
 
+
+    }
+    public function destroy($id){
+      $paciente_general=Paciente_general::find($id);
+      $paciente_general->delete();
+       return redirect('/admin/paciente_general');
+      dd($id);
 
     }
 

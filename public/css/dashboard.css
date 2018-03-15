@@ -34,9 +34,10 @@ header  > form{
 	line-height: 4;
 	padding-left: 30px;
 }
-header > form > input[type="search"]{
-	padding: 4px;
+.bu input[type="search"]{
+	padding: 3px;
 	height: 30px;
+	margin-left: 20px;
 	border: none;
 	color: black;
 	outline-color: black;
@@ -48,8 +49,13 @@ header > form > button{
 	color: white;
 	border: none;
 	background-color: #eabe20;
-	margin-left: 50px;
+	margin-left: 70px;
+	margin-top: 20px;
 }
+
+ .s{
+	 margin-top: -15px;
+ }
 header > ul{
 	width: 50%;
 	height: 100%;
@@ -89,7 +95,7 @@ button,input[type="submit"]{
 	margin-left: -20px;
 
 
-	
+
 }
 
 .userr{
@@ -97,7 +103,7 @@ button,input[type="submit"]{
 	margin-top: 30px;
 	margin-left: 60px;
 
-	
+
 }
 
 
@@ -143,21 +149,40 @@ nav ul li:hover{
 }
 
 .ti{
-	margin-top: 5px;
+	margin-top: -20px;
 	text-align: center;
 	background-color: #1d275e;
-	height: 70px;
+	height: 100px;
+
 
 
 }
 .ti h2{
-  color: white;	
-  	font-family: 'Karla', sans-serif;
+  color: white;
+  font-family: 'Karla', sans-serif;
 }
 .contendo{
-	margin-top: 45px;
+	margin-top: 75px;
+
 }
 
 .tt{
 margin-left: 20px;
+}
+.contenedor{
+	margin-top: 150px;
+}
+.bu{
+	margin-left: 100px;
+	margin-top: -60px;
+}
+.contenedor{
+	background-color: #eae5e5;;
+}
+
+.mas{
+	border-radius: 5px;
+	margin-left: 130px;
+	margin-top: -70px;
+	
 }

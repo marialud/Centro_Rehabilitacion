@@ -45,7 +45,7 @@ margin-top: 51px;
 }
 
 .estilo{
-	/*position: fixed;*/
+	
 	z-index: 1000;
     margin-left: 130px;
 	background-color: rgba(0,0,0,0.5);
