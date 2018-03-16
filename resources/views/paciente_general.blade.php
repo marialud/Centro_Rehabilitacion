@@ -136,9 +136,13 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Editar a :<b>luis</b> </h4>
+            <h4 class="modal-title">Editar a :<b id="nomModal">luis</b> </h4>
           </div>
+          {!! Form::open(
+            array('route'=>['admin.paciente_general.edit',$pacieg->id_paciente],
+            'method'=>'GET' )) !!}
           <div class="modal-body">
+              <input type="text" name="id" id="idEditar" value="">
             <div class="input-group">
               <label for="">Edad</label>
               <input type="number" name="edEditar" id="edEditar" value="" class="form-control">
@@ -171,14 +175,17 @@
       <script type="text/javascript">
        $(document).ready(function(){
          $(".btnEdit").on('click',function(){
-           var ed=$(this).data('edad');
-           var ti=$(this).data('tiempo_con_la_adiccion');
-           var lu=$(this).data('lugar_procedencia');
-          var ing=$(this).data('ingreso');
+           var ed=$(this).data('ed');
+           var ti=$(this).data('ti');
+           var lu=$(this).data('lu');
+          var ing=$(this).data('ing');
+          var i=$(this).data('id');
+          $("#idEditar").val(i);
            $("#edEditar").val(ed);
            $("#tiEditar").val(ti);
            $("#luEditar").val(lu);
            $("#ingEditar").val(ing);
+          $("#nomModal").text(no);
 
          });
        });

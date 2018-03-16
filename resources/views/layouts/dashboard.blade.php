@@ -44,11 +44,11 @@
 
 <nav class="con">
 
-        <div class="ti">
-         <h2>Centro de </h2>
-        <h2>Rehabilitación</h2>
-       </div>
-       <img src="../img/logotipoo.png" class="userr">
+
+         <h3>Centro de </h3>
+        <h3>Rehabilitación</h3>
+
+
       <div class="contendo">
 
       <ul>

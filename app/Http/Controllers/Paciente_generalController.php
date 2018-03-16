@@ -60,7 +60,19 @@ class Paciente_generalController extends Controller
 
     }
 
+    public function edit(Request $req) {
+     $paciente_general=Pacientegeneral::find($req->id);
+     $paciente_general->edad=$req->noEditar;
+     $paciente_general->tiempo_con_la_adiccion=$req->paEditar;
+     $paciente_general->lugar_procedencia=$req->maEditar;
+     $paciente_general->ingreso=$req->adEditar;
+     $paciente_general->save();
+     return redirect()->to('/admin/paciente_general')
+     ->with('mensaje','Paciente Modificado');
 
+
+
+    }
 
 
 

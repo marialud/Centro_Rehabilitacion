@@ -106,6 +106,7 @@
                data-pa="{{ $pacie->ap_paterno}}"
                data-ma="{{ $pacie->ap_materno}}"
                data-ad="{{ $pacie->adiccion}}"
+               data-id="{{ $pacie->id_paciente}}"
                data-toggle="modal" data-target="#myModal2">
                  <i class="fa fa-edit"></i></button>
                </td>
@@ -140,9 +141,13 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Editar a :<b>luis</b> </h4>
+        <h4 class="modal-title">Editar a :<b id="nomModal">luis</b> </h4>
       </div>
+      {!! Form::open(
+        array('route'=>['admin.pacientes.edit',$pacie->id_paciente],
+        'method'=>'GET' )) !!}
       <div class="modal-body">
+        <input type="hidden" name="id" id="idEditar" value="">
         <div class="input-group">
           <label for="">Nombre</label>
           <input type="text" name="noEditar" id="noEditar" value="" class="form-control">
@@ -175,14 +180,17 @@
   <script type="text/javascript">
    $(document).ready(function(){
      $(".btnEdit").on('click',function(){
-       var no=$(this).data('nombre');
-       var pa=$(this).data('apellido_paterno');
-       var ma=$(this).data('apellido_materno');
-      var ad=$(this).data('adiccion');
+       var no=$(this).data('no');
+       var pa=$(this).data('pa');
+       var ma=$(this).data('ma');
+      var ad=$(this).data('ad');
+      var i=$(this).data('id');
+       $("#idEditar").val(i);
        $("#noEditar").val(no);
        $("#paEditar").val(pa);
        $("#maEditar").val(ma);
        $("#adEditar").val(ad);
+       $("#nomModal").text(no);
 
      });
    });

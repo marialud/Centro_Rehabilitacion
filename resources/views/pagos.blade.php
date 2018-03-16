@@ -96,6 +96,7 @@
                 data-fe="{{ $pa->fecha}}"
                 data-ca="{{ $pa->cantidad}}"
                 data-sa="{{ $pa->saldo_restante}}"
+                data-id="{{ $pa->id_pago}}"
                 data-toggle="modal" data-target="#myModal2">
                   <i class="fa fa-edit"></i></button>
               </td>
@@ -127,9 +128,13 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Editar a :<b>luis</b> </h4>
+            <h4 class="modal-title">Editar a :<b id="nomModal">luis</b> </h4>
           </div>
+          {!! Form::open(
+            array('route'=>['admin.pagos.edit',$pagos->id_pago],
+            'method'=>'GET' )) !!}
           <div class="modal-body">
+              <input type="text" name="id" id="idEditar" value="">
             <div class="input-group">
               <label for="">Fecha</label>
               <input type="number" name="feEditar" id="feEditar" value="" class="form-control">
@@ -159,12 +164,16 @@
       <script type="text/javascript">
        $(document).ready(function(){
          $(".btnEdit").on('click',function(){
-           var fe=$(this).data('fecha');
-           var ca=$(this).data('cantidad');
-           var sa=$(this).data('cantidad_restante');
+           var fe=$(this).data('fe');
+           var ca=$(this).data('ca');
+           var sa=$(this).data('sa');
+          var i=$(this).data('id');
+
+           $("#idEditar").val(i);
            $("#feEditar").val(ed);
            $("#caEditar").val(ti);
            $("#saEditar").val(lu);
+           $("#nomModal").text(no);
 
 
          });

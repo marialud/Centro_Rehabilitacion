@@ -61,6 +61,18 @@ class PagosController extends Controller
       dd($id);
 
     }
+    public function edit(Request $req) {
+     $Pagos=Pagos::find($req->id);
+     $Pagos->fecha=$req->feEditar;
+     $Pagos->cantidad=$req->caEditar;
+     $Pagos->saldo_restante=$req->saEditar;
+     $Pagos->save();
+     return redirect()->to('/admin/paciente_general')
+     ->with('mensaje','Paciente Modificado');
+
+
+
+    }
 
 
 }

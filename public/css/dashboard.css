@@ -117,7 +117,7 @@ nav{
 	left: 0px;
 }
 section#contenedor{
-	width: 79%;
+	width: 40%;
 	float: right;
 	margin-top: 72px;
 
@@ -129,8 +129,8 @@ nav ul li a{
 
 }
 .con{
-	background-color: #1e1c17;
-	margin-top: -77px;
+	background-color: #052428;
+	margin-top: -70px;
 
 }
 nav ul li{
@@ -151,7 +151,7 @@ nav ul li:hover{
 .ti{
 	margin-top: -20px;
 	text-align: center;
-	background-color: #1d275e;
+	background-color: #042023;
 	height: 100px;
 
 
@@ -184,5 +184,5 @@ margin-left: 20px;
 	border-radius: 5px;
 	margin-left: 130px;
 	margin-top: -70px;
-	
+
 }

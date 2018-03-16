@@ -57,11 +57,18 @@ class PacientesController extends Controller
       dd($id);
 
     }
+  public function edit(Request $req) {
+   $paciente=Paciente::find($req->id);
+   $paciente->nombre=$req->noEditar;
+   $paciente->ap_paterno=$req->paEditar;
+   $paciente->ap_materno=$req->maEditar;
+   $paciente->adiccion=$req->adEditar;
+   $paciente->save();
+   return redirect()->to('/admin/pacientes')
+   ->with('mensaje','Paciente Modificado');
 
 
 
-
-
-
+  }
 
 }
