@@ -12,15 +12,18 @@ class Paciente_generalController extends Controller
       $this->middleware('auth');
   }
 
-  public function index(){
+  public function index($id){
      $registros=
      \DB::table('paciente_general')
+     ->where('id_paciente','=',$id)
      ->orderBy('edad')
+
      //->take(10)
      ->get();
 
     return view('paciente_general')
-    ->with('paciente_general',$registros);
+    ->with('id',$id)
+    ->with('pg',$registros);
   }
     public function store(Request $req){
 
@@ -39,13 +42,14 @@ class Paciente_generalController extends Controller
         ->withErrors($validator);
      }else{
          Paciente_general::create([
+           'id_paciente'=>$req->id,
           'edad'=>$req->edad,
           'tiempo_con_la_adiccion'=>$req->tiempo_con_la_adiccion,
           'lugar_procedencia'=>$req->lugar_procedencia,
           'ingreso'=>$req->ingreso
 
          ]);
-         return redirect() ->to('/admin/paciente_general')
+         return redirect() ->to('/admin/paciente_general/'.$req->id)
          ->with('mensaje','Paciente Agregado');
 
      }
@@ -55,19 +59,19 @@ class Paciente_generalController extends Controller
     public function destroy($id){
       $paciente_general=Paciente_general::find($id);
       $paciente_general->delete();
-       return redirect('/admin/paciente_general');
+       return redirect('/admin/paciente_general/'.$id);
       dd($id);
 
     }
 
     public function edit(Request $req) {
-     $paciente_general=Pacientegeneral::find($req->id);
-     $paciente_general->edad=$req->noEditar;
-     $paciente_general->tiempo_con_la_adiccion=$req->paEditar;
-     $paciente_general->lugar_procedencia=$req->maEditar;
-     $paciente_general->ingreso=$req->adEditar;
+     $paciente_general=Paciente_general::find($req->id);
+     $paciente_general->edad=$req->edEditar;
+     $paciente_general->tiempo_con_la_adiccion=$req->tiEditar;
+     $paciente_general->lugar_procedencia=$req->luEditar;
+     $paciente_general->ingreso=$req->ingEditar;
      $paciente_general->save();
-     return redirect()->to('/admin/paciente_general')
+     return redirect()->to('/admin/paciente_general/'.$req->id)
      ->with('mensaje','Paciente Modificado');
 
 

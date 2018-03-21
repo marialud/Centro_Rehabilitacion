@@ -12,7 +12,7 @@ class Pagos extends Model
    protected $table='pagos';
    //campos que se pueden manipular de
    protected $fillable=[
-     'fecha','cantidad','saldo_restante'
+     'fecha','cantidad','saldo_restante','id_paciente'
    ];
 
 }

@@ -14,17 +14,15 @@ class PagosController extends Controller
       $this->middleware('auth');
   }
 
-    public function index($id){
+    public function index(){
       $registros=
       \DB::table('pagos')
-      ->where('id_paciente','=',$id)
       ->orderBy('id_pago')
       //->take(10)
       ->get();
 
      return view('pagos')
-     ->with('pagos',$registros)
-     ->with('id_paciente',$id);
+     ->with('pagos',$registros);
 
     }
     public function store(Request $req){
@@ -37,12 +35,12 @@ class PagosController extends Controller
      if($validator->fails()){
         //quiere decir que no esta correcto
 
-        return redirect('/admin/pagos')
+        return redirect('/admin/pacientes')
         ->withInput()
         ->withErrors($validator);
      }else{
          Pagos::create([
-          'id_paciente'=>$req->id_paciente,
+          'id_paciente'=>$req->id,
           'fecha'=>$req->fecha,
           'cantidad'=>$req->cantidad,
           'saldo_restante'=>$req->saldo_restante
@@ -67,7 +65,7 @@ class PagosController extends Controller
      $Pagos->cantidad=$req->caEditar;
      $Pagos->saldo_restante=$req->saEditar;
      $Pagos->save();
-     return redirect()->to('/admin/paciente_general')
+     return redirect()->to('/admin/pagos')
      ->with('mensaje','Paciente Modificado');
 
 

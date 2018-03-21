@@ -28,12 +28,11 @@ Route::group(['prefix'=>'admin','as'=>'admin.'],function(){
    Route::resource('pagos','PagosController');
    Route::get('/pacientes','PacientesController@index');
    Route::resource('pacientes','PacientesController');
-   Route::get('/paciente_general','Paciente_generalController@index');
+   Route::get('/paciente_general/{id}','Paciente_generalController@index');
   Route::resource('paciente_general','Paciente_generalController');
 
 
 });
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');

@@ -12,6 +12,6 @@ class Paciente_general extends Model
  protected $table='paciente_general';
  //campos que se pueden manipular de
  protected $fillable=[
-   'edad','tiempo_con_la_adiccion','lugar_procedencia','ingreso'
+   'edad','tiempo_con_la_adiccion','lugar_procedencia','ingreso','id_paciente'
  ];
 }

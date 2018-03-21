@@ -27,7 +27,6 @@
 		</form>
 		 <ul>
 
-       <li>
          <li>
  				<i class="fa fa-homee"></i>
  			</li>
@@ -45,13 +44,16 @@
 <nav class="con">
 
 
-         <h3>Centro de </h3>
-        <h3>Rehabilitación</h3>
+         <h2>Centro de </h2>
+        <h2>Rehabilitación</h2>
 
 
       <div class="contendo">
 
       <ul>
+        <div class="pri">
+        <h5>Principal</h5>
+      </div>
       <li>
         <a href="{{ url('/dashboard')}}">
         <h4>
@@ -68,6 +70,14 @@
         </h4>
 				</a>
 			</li>
+      <li>
+          <a href="{{ url('/admin/pagos')}}">
+          <h4>
+          <i class="fa fa-credit-card"></i>
+          Pagos
+        </h4>
+        </a>
+      </li>
 			<li>
 				<a href="{{ url('/login')}}">
         <h4>

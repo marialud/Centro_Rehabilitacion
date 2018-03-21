@@ -1,8 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('contenido')
-<link rel="stylesheet" href="./../css/font-awesome.min.css">
-<link rel="stylesheet" href="./../css/dashboard.css">
+<link rel="stylesheet" href="{{ asset ('css/font-awesome.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/dashboard.css')}}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css')}}">
 
@@ -10,11 +9,13 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <div class="container">
  <div class="col-md-8">
+      <div class="pa"><h2>Paciente General</h2></div>
    <div class="card">
-     <div class="card-header">Paciente General</div>
+     <div class="card-header pa"><h4>Agregar</h4></div>
        <div class="card-body">
          <!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+<button type="button" class="mas" data-toggle="modal" data-target="#myModal">
+  <i class="fa fa-plus"></i></button>
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -24,10 +25,11 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title">Agregar Paciente</h4>
       </div>
       <div class="modal-body">
         {{Form::open( array('url'=>'admin/paciente_general','files'=>true )) }}
+        <input type="hidden" name="id" id="idEditar" value="{{$id}}">
         <div class="input-group col-md-12">
           <label for='edad'>Edad</label><br>
            {{Form::number('edad','',array('class'=>'form-control',
@@ -49,16 +51,18 @@
                'placeholder'=>'ingreso') ) }}
              </div>
             <div class="input-group col-md-12">
-             {{Form::submit('Enviar',array('class'=>'btn btn-primary'))  }}
+
             </div>
 
-           {{Form::close() }}
+
 
 
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        {{Form::submit('Enviar',array('class'=>'btn btn-primary'))  }}
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+         {{Form::close() }}
       </div>
     </div>
 
@@ -78,20 +82,20 @@
              {{ session()->get('mensaje') }}
            </div>
          @endif
-         <table class="table table-condensed">
+         <table class="table table-condensed tabla">
         <thead>
           <tr>
-              <td>Id</td>
-              <td>edad</td>
-              <td>tiempo_con_la_adiccion</td>
-              <td>lugar_procedencia</td>
-              <td>ingreso</td>
-              <td>Editar</td>
-              <td>Eliminar </td>
+              <td><h5>Id</h5></td>
+              <td><h5>Edad</h5></td>
+              <td><h5>Tiempo con la adiccion</h5></td>
+              <td><h5>Lugar procedencia</h5></td>
+              <td><h5>Ingreso</h5></td>
+              <td><h5>Editar</h5></td>
+              <td><h5>Eliminar</h5></td>
           <tr>
           </thead>
           <tbody>
-            @forelse($paciente_general as $pacieg)
+            @forelse($pg as $pacieg)
              <tr>
                <td>{{ $pacieg->id_paciente}}</td>
                <td>{{ $pacieg->edad}}</td>
@@ -100,7 +104,8 @@
                <td>{{ $pacieg->ingreso}}</td>
 
                <td>
-               <button type="button" class="btn btn-info btn-lg btnEdit"
+               <button type="button" class="edi btnEdit"
+               data-ed="{{ $pacieg->id_paciente}}"
                data-ed="{{ $pacieg->edad}}"
                data-ti="{{ $pacieg->tiempo_con_la_adiccion}}"
                data-lu="{{ $pacieg->lugar_procedencia}}"
@@ -112,7 +117,7 @@
                  {!! Form::open(
                    array('route'=>['admin.paciente_general.destroy',$pacieg->id_paciente],
                 'method'=>'delete' )) !!}
-                 <button type="submit">
+                 <button type="submit" class="elimi">
                     <i class="fa fa-trash"></i>
                  </button>
                  {!! Form::close() !!}
@@ -130,19 +135,21 @@
     </div>
     <!-- Modal -->
     <div id="myModal2" class="modal fade" role="dialog">
+        @if(count($pg)>0)
       <div class="modal-dialog">
 
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Editar a :<b id="nomModal">luis</b> </h4>
+            <h4 class="modal-title">Editar </h4>
           </div>
+
           {!! Form::open(
-            array('route'=>['admin.paciente_general.edit',$pacieg->id_paciente],
+            array('route'=>['admin.paciente_general.edit',$pg{0}->id_paciente],
             'method'=>'GET' )) !!}
           <div class="modal-body">
-              <input type="text" name="id" id="idEditar" value="">
+              <input type="hidden" name="id" id="idEditar" value="{{$id}}">
             <div class="input-group">
               <label for="">Edad</label>
               <input type="number" name="edEditar" id="edEditar" value="" class="form-control">
@@ -165,9 +172,13 @@
             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 
           </div>
+
+          {{Form::close() }}
+
         </div>
 
       </div>
+        @endif
     </div>
 
       @endsection
@@ -175,6 +186,7 @@
       <script type="text/javascript">
        $(document).ready(function(){
          $(".btnEdit").on('click',function(){
+            var id_paciente=$(this).data('id_paciente');
            var ed=$(this).data('ed');
            var ti=$(this).data('ti');
            var lu=$(this).data('lu');
@@ -185,7 +197,7 @@
            $("#tiEditar").val(ti);
            $("#luEditar").val(lu);
            $("#ingEditar").val(ing);
-          $("#nomModal").text(no);
+          $("#nomModal").text(id_paciente);
 
          });
        });

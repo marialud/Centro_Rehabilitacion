@@ -10,54 +10,10 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <div class="container">
  <div class="col-md-8">
+     <div class="pa"><h2>Pagos</h2></div>
    <div class="card">
-     <div class="card-header">Pagos</div>
+     <div class="card-header"></div>
        <div class="card-body">
-         <!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
-      </div>
-      <div class="modal-body">
-        {{Form::open( array('url'=>'admin/pagos','files'=>true )) }}
-        <input type="hidden" name="id_paciente" value="{{$id_paciente}}">
-        <div class="input-group col-md-12">
-          <label for='fecha'>Fecha</label><br>
-           {{Form::date('fecha','',array('class'=>'form-control',
-           'placeholder'=>'fecha') ) }}
-         </div>
-          <div class="input-group col-md-12">
-            <label for='cantidad'>Cantidad</label><br>
-             {{Form::number('cantidad','',array('class'=>'form-control',
-             'placeholder'=>'cantidad') ) }}
-           </div>
-           <div class="input-group col-md-12">
-             <label for='saldo_restante'>Saldo_restante</label><br>
-              {{Form::number('saldo_restante','',array('class'=>'form-control',
-              'placeholder'=>'saldo_restante') ) }}
-            </div>
-            <div class="input-group col-md-12">
-             {{Form::submit('Enviar',array('class'=>'btn btn-primary'))  }}
-            </div>
-
-           {{Form::close() }}
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
           @if($errors->any())
               <div class="alert alert-warning alert-dismissable">
                 <ul>
@@ -72,15 +28,16 @@
              {{ session()->get('mensaje') }}
            </div>
          @endif
-         <table class="table table-condensed">
+         <table class="table table-condensed tabla">
         <thead>
           <tr>
-              <td>Id Pago</td>
-              <td>Id paciente</td>
-              <td>Fecha</td>
-              <td>Cantidad</td>
-              <td>Saldo Restante</td>
-              <td>Eliminar</td>
+              <td><h5>No.Folio</h5></td>
+              <td><h5>Id paciente</h5></td>
+              <td><h5>Fecha</h5></td>
+              <td><h5>Cantidad</h5></td>
+              <td><h5>Saldo Restante</h5></td>
+              <td><h5>Editar</h5></td>
+              <td><h5>Eliminar</h5></td>
           <tr>
           </thead>
           <tbody>
@@ -92,7 +49,7 @@
                <td>{{ $pa->cantidad}}</td>
                <td>{{ $pa->saldo_restante}}</td>
               <td>
-                <button type="button" class="btn btn-info btn-lg btnEdit"
+                <button type="button" class="btnEdit edi"
                 data-fe="{{ $pa->fecha}}"
                 data-ca="{{ $pa->cantidad}}"
                 data-sa="{{ $pa->saldo_restante}}"
@@ -104,7 +61,7 @@
                  {!! Form::open(
                    array('route'=>['admin.pagos.destroy',$pa->id_pago],
                 'method'=>'delete' )) !!}
-                 <button type="submit">
+                 <button type="submit" class="elimi">
                    <i class="fa fa-trash"></i>
                  </button>
                  {!! Form::close() !!}
@@ -128,16 +85,16 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Editar a :<b id="nomModal">luis</b> </h4>
+            <h4 class="modal-title">Editar </h4>
           </div>
           {!! Form::open(
-            array('route'=>['admin.pagos.edit',$pagos->id_pago],
+            array('route'=>['admin.pagos.edit',$pa->id_pago],
             'method'=>'GET' )) !!}
           <div class="modal-body">
-              <input type="text" name="id" id="idEditar" value="">
+              <input type="hidden" name="id" id="idEditar" value="">
             <div class="input-group">
               <label for="">Fecha</label>
-              <input type="number" name="feEditar" id="feEditar" value="" class="form-control">
+              <input type="date" name="feEditar" id="feEditar" value="" class="form-control">
              </div>
              <div class="input-group">
                <label for="">Cantidad</label>
@@ -170,9 +127,9 @@
           var i=$(this).data('id');
 
            $("#idEditar").val(i);
-           $("#feEditar").val(ed);
-           $("#caEditar").val(ti);
-           $("#saEditar").val(lu);
+           $("#feEditar").val(fe);
+           $("#caEditar").val(ca);
+           $("#saEditar").val(sa);
            $("#nomModal").text(no);
 
 
